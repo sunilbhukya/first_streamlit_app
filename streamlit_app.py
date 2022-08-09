@@ -26,7 +26,7 @@ try:
     streamlit.error("pleae enter inf")
   else:
     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
     streamlit.dataframe(fruityvice_normalized)
 except URLError as e:
