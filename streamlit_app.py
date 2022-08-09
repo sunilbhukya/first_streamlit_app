@@ -15,3 +15,5 @@ selected=streamlit.multiselect('pick some fruits:',list(my_fruit_list.index),['A
 view=my_fruit_list.loc[selected]
 streamlit.dataframe(view)
 
+import snowflake.connector
+
