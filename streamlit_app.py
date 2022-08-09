@@ -37,20 +37,23 @@ except URLError as e:
   streamlit.error()
 
 # write your own comment -what does the next line do? 
-
-
-
-title = streamlit.text_input('Which fruit you want to add', 'jackfruit')
-streamlit.write('Thanks for adding', title)
-streamlit.stop()
-
-
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("select * from fruit_load_list")
-my_data_row = my_cur.fetchall()
 streamlit.header("This Fruit Load List Contanis:")
-streamlit.dataframe(my_data_row)
+def load_list():
+    with my_cur.cursor() as my_cur:
+        my_cur.execute("select * from fruit_load_list")
+        return my_cur.fetchall()
+    if streamlit.button('get fruit list'):
+        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+        myrows=load_list()
+        streamlit.dataframe(myrows)
+        
+
+
+
+
+
+
+
 
 
 
