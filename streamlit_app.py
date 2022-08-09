@@ -30,5 +30,5 @@ streamlit.write('Thanks for adding', title)
 
 data=['jackfruit']
 df2 = pd.DataFrame(data)
-df1=df.append(df2)
-stream.dataframe(df1)
+df.append(df2)
+
