@@ -1,6 +1,9 @@
 import streamlit
 import pandas as pd
+import snowflake.connector
+from urllib.error import URLError
 #123
+
 streamlit.title('My parents New Healthy Dinner')
 streamlit.header('breakfast menu')
 streamlit.text('🥣 omega 3 & bluberry oatmeal')
@@ -15,7 +18,7 @@ selected=streamlit.multiselect('pick some fruits:',list(my_fruit_list.index),['A
 view=my_fruit_list.loc[selected]
 streamlit.dataframe(view)
 
-import snowflake.connector
+streamlit.stop()
 
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
@@ -23,12 +26,10 @@ my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.header("This Fruit Load List Contanis:")
-df=streamlit.dataframe(my_data_row).append(df2)
+streamlit.dataframe(my_data_row).append(df2)
 title = streamlit.text_input('Which fruit you want to add', 'jackfruit')
 streamlit.write('Thanks for adding', title)
 
 
-data=['jackfruit']
-df2 = pd.DataFrame(data)
 
 
