@@ -2,6 +2,7 @@ import streamlit
 import pandas as pd
 import snowflake.connector
 from urllib.error import URLError
+import requests
 #123
 
 streamlit.title('My parents New Healthy Dinner')
@@ -17,6 +18,19 @@ my_fruit_list=my_fruit_list.set_index('Fruit')
 selected=streamlit.multiselect('pick some fruits:',list(my_fruit_list.index),['Avocado','Strawberries'])
 view=my_fruit_list.loc[selected]
 streamlit.dataframe(view)
+
+streamlit.header("Frutyvice advise")
+fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+streamlit.write('The user entered ', fruit_choice)
+
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+
+# write your own comment -what does the next line do? 
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# write your own comment - what does this do?
+streamlit.dataframe(fruityvice_normalized)
+
+
 title = streamlit.text_input('Which fruit you want to add', 'jackfruit')
 streamlit.write('Thanks for adding', title)
 streamlit.stop()
