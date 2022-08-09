@@ -14,4 +14,4 @@ lis=list(my_fruit_list.index)
 fruits_selected= streamlit.multiselect("pick some fruits:",lis,['Avocado','Strawberries'])
 
 
-
+#
