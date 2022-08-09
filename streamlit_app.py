@@ -17,7 +17,8 @@ my_fruit_list=my_fruit_list.set_index('Fruit')
 selected=streamlit.multiselect('pick some fruits:',list(my_fruit_list.index),['Avocado','Strawberries'])
 view=my_fruit_list.loc[selected]
 streamlit.dataframe(view)
-
+title = streamlit.text_input('Which fruit you want to add', 'jackfruit')
+streamlit.write('Thanks for adding', title)
 streamlit.stop()
 
 
@@ -26,9 +27,8 @@ my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.header("This Fruit Load List Contanis:")
-streamlit.dataframe(my_data_row).append(df2)
-title = streamlit.text_input('Which fruit you want to add', 'jackfruit')
-streamlit.write('Thanks for adding', title)
+streamlit.dataframe(my_data_row)
+
 
 
 
