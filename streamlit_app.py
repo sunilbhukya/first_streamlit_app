@@ -23,6 +23,9 @@ my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.header("This Fruit Load List Contanis:")
-streamlit.dataframe(my_data_row)
-#123
-streamlit.write("which fruit yiu want to add")
+df=streamlit.dataframe(my_data_row)
+fruityy='jackfruit'
+title = st.text_input('Which fruit you want to add', fruityy)
+st.write('Thanks for adding', title)
+df.loc[len(df.index)] = ['jackfruit'] 
+streamlit.dataframe(df)
