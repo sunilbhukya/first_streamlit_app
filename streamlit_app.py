@@ -24,7 +24,7 @@ my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchall()
 streamlit.header("This Fruit Load List Contanis:")
 df=streamlit.dataframe(my_data_row)
-title = st.text_input('Which fruit you want to add', 'jackfruit')
+title = streamlit.text_input('Which fruit you want to add', 'jackfruit')
 streamlit.write('Thanks for adding', title)
 df.loc[len(df.index)] = ['jackfruit'] 
 streamlit.dataframe(df)
