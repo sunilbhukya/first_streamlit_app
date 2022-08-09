@@ -56,7 +56,7 @@ def insertroww(new):
 addfruit=streamlit.text_input('what you want to ad')
 if streamlit.button('adding'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    backfrom=insertrow(addfruit)
+    backfrom=insertroww(addfruit)
     streamline.text(backfrom)
 
        
