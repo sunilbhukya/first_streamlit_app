@@ -26,7 +26,7 @@ streamlit.header("This Fruit Load List Contanis:")
 df=streamlit.dataframe(my_data_row)
 title = streamlit.text_input('Which fruit you want to add', 'jackfruit')
 streamlit.write('Thanks for adding', title)
-df.loc[len(df.index)] = ['jackfruit'] 
+
 
 data=['jackfruit']
 df2 = pd.DataFrame(data)
