@@ -27,4 +27,8 @@ df=streamlit.dataframe(my_data_row)
 title = streamlit.text_input('Which fruit you want to add', 'jackfruit')
 streamlit.write('Thanks for adding', title)
 df.loc[len(df.index)] = ['jackfruit'] 
-streamlit.dataframe(df)
+
+data=['jackfruit']
+df2 = pd.DataFrame(data)
+df1=df.append(df2)
+stream.dataframe(df1)
